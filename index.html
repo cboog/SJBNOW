@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Insertion Example</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    img {
-      width: 80%; /* Adjust the width of the image */
-      max-width: 600px; /* Max width to prevent it from being too large */
-      border-radius: 10px; /* Optional styling for rounded corners */
-    }
-  </style>
+  <title>Image with Hoverable Marker</title>
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Image Display Example</h1>
+  <h1>Image with Hoverable Marker</h1>
 
-  <!-- Image tag to display an image from a URL -->
-  <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Placeholder Image">
+  <!-- Main Image -->
+  <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map">
 
+  <!-- Marker on the image -->
+  <div class="marker">
+    <!-- Hover Image that appears when hovering over the marker -->
+    <img class="hover-image" src="https://thebravenews.press/wp-content/uploads/2024/09/img_5011.jpeg?w=1024" alt="Hover Image">
+  </div>
+
+  <script>
+    // Optional: Update the position of the marker and hover image programmatically
+    const marker = document.querySelector('.marker');
+    const hoverImage = document.querySelector('.hover-image');
+
+    // Set the marker's position relative to the image (you can adjust the top/left values)
+    marker.style.top = '40%';  // Vertical position of the marker
+    marker.style.left = '50%'; // Horizontal position of the marker
+  </script>
 </body>
 </html>
