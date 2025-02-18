@@ -1,34 +1,47 @@
-// Function to add events to markers
-function addEvent() {
-    let eventName = document.getElementById("event-name").value;
-    let eventLocation = document.getElementById("event-location").value;
-    let eventTime = document.getElementById("event-time").value;
+document.getElementById('eventForm').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-    if (!eventName) {
-        alert("Please enter an event name.");
-        return;
-    }
+    // Retrieve event data from the form
+    const eventName = document.getElementById('eventName').value;
+    const eventLocation = document.getElementById('eventLocation').value;
+    const eventHour = document.getElementById('eventHour').value;
+    const eventMinute = document.getElementById('eventMinute').value;
+    const eventAMPM = document.getElementById('eventAMPM').value;
 
-    let marker = document.getElementById(eventLocation);
-    if (marker) {
-        let eventTag = document.createElement("div");
-        eventTag.classList.add("event-tag");
-        eventTag.innerHTML = `<strong>${eventName}</strong><br>${eventTime}`;
-        eventTag.style.position = "absolute";
-        eventTag.style.background = "white";
-        eventTag.style.padding = "5px";
-        eventTag.style.border = "1px solid navy";
-        eventTag.style.borderRadius = "5px";
-        eventTag.style.top = "-40px";
-        eventTag.style.left = "10px";
-        eventTag.style.fontSize = "12px";
-        eventTag.style.whiteSpace = "nowrap";
+    const eventTime = `${eventHour}:${eventMinute} ${eventAMPM}`;
+    const eventImage = `images/${eventLocation}.jpg`;  // Placeholder for event images
+    
+    // Get the marker location (adjust the coordinates as necessary)
+    const locationCoordinates = getLocationCoordinates(eventLocation);
 
-        marker.appendChild(eventTag);
-        
-        // Remove event display after 5 seconds
-        setTimeout(() => {
-            eventTag.remove();
-        }, 5000);
-    }
+    // Create a new marker element
+    const marker = document.createElement('div');
+    marker.classList.add('marker');
+    marker.style.top = `${locationCoordinates.top}px`;
+    marker.style.left = `${locationCoordinates.left}px`;
+
+    // Create an image for the marker
+    const markerImage = document.createElement('img');
+    markerImage.src = eventImage;
+    marker.appendChild(markerImage);
+
+    // Add event name as a title when hovering
+    marker.title = `${eventName} - ${eventTime}`;
+
+    // Append the marker to the map
+    document.getElementById('eventMarkers').appendChild(marker);
+
+    // Clear form fields
+    document.getElementById('eventForm').reset();
+});
+
+// Example function to get coordinates for locations (replace with your actual coordinates)
+function getLocationCoordinates(location) {
+    const coordinates = {
+        'location1': { top: 100, left: 150 },
+        'location2': { top: 200, left: 300 },
+        // Add other locations here
+    };
+
+    return coordinates[location] || { top: 0, left: 0 };
 }
