@@ -43,7 +43,7 @@ button:hover {
 }
 
 #campusMap {
-    width: 80%;
+    width: 100%;
     max-width: 1000px;
     height: auto;
 }
