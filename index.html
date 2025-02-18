@@ -1,58 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Event Map</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Insertion Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      width: 80%; /* Adjust the width of the image */
+      max-width: 600px; /* Max width to prevent it from being too large */
+      border-radius: 10px; /* Optional styling for rounded corners */
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Campus Event Map</h1>
-    </header>
+  <h1>Image Display Example</h1>
 
-    <main>
-        <!-- Event form -->
-        <div class="form-container">
-            <h2>Add an Event</h2>
-            <form id="eventForm">
-                <label for="eventName">Event Name:</label>
-                <input type="text" id="eventName" required><br>
+  <!-- Image tag to display an image from a URL -->
+  <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Placeholder Image">
 
-                <label for="eventLocation">Event Location:</label>
-                <select id="eventLocation">
-                    <option value="location1">Location 1</option>
-                    <option value="location2">Location 2</option>
-                    <!-- Add more locations -->
-                </select><br>
-
-                <label for="eventTime">Event Time:</label>
-                <select id="eventHour">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <!-- Add hours -->
-                </select> :
-                <select id="eventMinute">
-                    <option value="00">00</option>
-                    <option value="30">30</option>
-                    <!-- Add minutes -->
-                </select>
-                <select id="eventAMPM">
-                    <option value="AM">AM</option>
-                    <option value="PM">PM</option>
-                </select><br>
-
-                <button type="submit">Add Event</button>
-            </form>
-        </div>
-
-        <!-- Campus map -->
-        <div class="map-container">
-            <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map" id="campusMap">
-            <div id="eventMarkers"></div> <!-- Event markers will be added here -->
-        </div>
-    </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
