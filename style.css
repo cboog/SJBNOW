@@ -1,84 +1,79 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
 }
 
-#map-container {
-    position: relative;
-    width: 80vw; /* 80% of viewport width */
-    max-width: 1000px; /* Ensures it doesn't get too large */
-    height: auto; /* Maintain aspect ratio */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header {
+    margin: 20px;
 }
 
-#campus-map {
-    width: 100%;
-    height: auto;
+h1 {
+    font-size: 36px;
+}
+
+.form-container {
+    margin: 30px 0;
+}
+
+label {
     display: block;
-    border: 5px solid navy; /* Optional border for visibility */
-    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
-/* Markers */
+input, select {
+    margin: 10px 0;
+    padding: 8px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #005b7f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004457;
+}
+
+.map-container {
+    position: relative;
+    display: inline-block;
+}
+
+#campusMap {
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+}
+
 .marker {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 50px;
     background-color: navy;
     border-radius: 50%;
     cursor: pointer;
-    transform: translate(-50%, -50%);
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marker img {
+    display: none;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.marker:hover img {
+    display: block;
 }
 
 .marker:hover {
-    transform: scale(1.5);
-}
-
-/* Hover Image Effect */
-.marker::after {
-    content: "";
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-image: url('https://via.placeholder.com/60'); /* Default Image */
-    background-size: cover;
-    top: -70px;
-    left: -20px;
-    display: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-.marker:hover::after {
-    display: block;
-}
-
-/* Event Form */
-#event-form {
-    background: white;
-    padding: 15px;
-    width: 300px;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-#event-form label,
-#event-form input,
-#event-form select,
-#event-form button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
+    background-color: transparent;
 }
