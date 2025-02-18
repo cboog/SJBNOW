@@ -3,61 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Campus Map</title>
+    <title>Campus Event Map</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Campus Event Map</h1>
+    </header>
 
-    <div id="map-container">
-        <img id="campus-map" src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map">
-        
-        <!-- Markers -->
-        <div class="marker" id="marker-1" style="top: 26%; left: 34%;"></div>
-        <div class="marker" id="marker-2" style="top: 51%; left: 57%;"></div>
-        <div class="marker" id="marker-3" style="top: 23%; left: 80%;"></div>
-        <div class="marker" id="marker-4" style="top: 45%; left: 57%;"></div>
-        <div class="marker" id="marker-5" style="top: 80%; left: 80%;"></div>
-        <div class="marker" id="marker-6" style="top: 67%; left: 34%;"></div>
-        <div class="marker" id="marker-7" style="top: 67%; left: 54%;"></div>
-        <div class="marker" id="marker-8" style="top: 50%; left: 34%;"></div>
-        <div class="marker" id="marker-9" style="top: 76%; left: 45%;"></div>
-        <div class="marker" id="marker-10" style="top: 76%; left: 34%;"></div>
-        <div class="marker" id="marker-11" style="top: 65%; left: 12%;"></div>
-    </div>
+    <main>
+        <!-- Event form -->
+        <div class="form-container">
+            <h2>Add an Event</h2>
+            <form id="eventForm">
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" required><br>
 
-    <!-- Event Form -->
-    <div id="event-form">
-        <h2>Add Event</h2>
-        <label for="event-name">Event Name:</label>
-        <input type="text" id="event-name">
-        
-        <label for="event-location">Event Location:</label>
-        <select id="event-location">
-            <option value="marker-1">Marker 1</option>
-            <option value="marker-2">Marker 2</option>
-            <option value="marker-3">Marker 3</option>
-            <option value="marker-4">Marker 4</option>
-            <option value="marker-5">Marker 5</option>
-            <option value="marker-6">Marker 6</option>
-            <option value="marker-7">Marker 7</option>
-            <option value="marker-8">Marker 8</option>
-            <option value="marker-9">Marker 9</option>
-            <option value="marker-10">Marker 10</option>
-            <option value="marker-11">Marker 11</option>
-        </select>
-        
-        <label for="event-time">Event Time:</label>
-        <select id="event-time">
-            <option>8:00 AM</option>
-            <option>10:00 AM</option>
-            <option>12:00 PM</option>
-            <option>2:00 PM</option>
-            <option>4:00 PM</option>
-            <option>6:00 PM</option>
-        </select>
+                <label for="eventLocation">Event Location:</label>
+                <select id="eventLocation">
+                    <option value="location1">Location 1</option>
+                    <option value="location2">Location 2</option>
+                    <!-- Add more locations -->
+                </select><br>
 
-        <button onclick="addEvent()">Add Event</button>
-    </div>
+                <label for="eventTime">Event Time:</label>
+                <select id="eventHour">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <!-- Add hours -->
+                </select> :
+                <select id="eventMinute">
+                    <option value="00">00</option>
+                    <option value="30">30</option>
+                    <!-- Add minutes -->
+                </select>
+                <select id="eventAMPM">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select><br>
+
+                <button type="submit">Add Event</button>
+            </form>
+        </div>
+
+        <!-- Campus map -->
+        <div class="map-container">
+            <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1661938386/bosco/gj9ncox3wdkzh3cbmn6m/Campus-MAP.jpg" alt="Campus Map" id="campusMap">
+            <div id="eventMarkers"></div> <!-- Event markers will be added here -->
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
