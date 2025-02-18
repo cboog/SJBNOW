@@ -18,7 +18,7 @@ body {
 
 #campus-map {
     width: 100%;
-    height: auto;
+    height: 800;
     display: block;
     border: 5px solid navy; /* Optional border for better visibility */
     border-radius: 10px;
