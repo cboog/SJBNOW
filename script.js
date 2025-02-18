@@ -1,49 +1,34 @@
-document.getElementById("add-event-button").addEventListener("click", function() {
-  const location = document.getElementById("event-location").value;
-  const eventName = document.getElementById("event-name").value;
-  const eventHour = document.getElementById("event-hour").value.padStart(2, '0');
-  const eventMinute = document.getElementById("event-minute").value.padStart(2, '0');
-  const eventPeriod = document.getElementById("event-period").value;
+// Function to add events to markers
+function addEvent() {
+    let eventName = document.getElementById("event-name").value;
+    let eventLocation = document.getElementById("event-location").value;
+    let eventTime = document.getElementById("event-time").value;
 
-  if (eventName.trim() === "" || eventHour === "" || eventMinute === "") {
-    alert("Please enter all event details.");
-    return;
-  }
+    if (!eventName) {
+        alert("Please enter an event name.");
+        return;
+    }
 
-  const eventTime = `${eventHour}:${eventMinute} ${eventPeriod}`;
-  const marker = document.getElementById(location);
-  if (!marker) {
-    alert("Invalid location selected.");
-    return;
-  }
+    let marker = document.getElementById(eventLocation);
+    if (marker) {
+        let eventTag = document.createElement("div");
+        eventTag.classList.add("event-tag");
+        eventTag.innerHTML = `<strong>${eventName}</strong><br>${eventTime}`;
+        eventTag.style.position = "absolute";
+        eventTag.style.background = "white";
+        eventTag.style.padding = "5px";
+        eventTag.style.border = "1px solid navy";
+        eventTag.style.borderRadius = "5px";
+        eventTag.style.top = "-40px";
+        eventTag.style.left = "10px";
+        eventTag.style.fontSize = "12px";
+        eventTag.style.whiteSpace = "nowrap";
 
-  const eventText = document.createElement("div");
-  eventText.textContent = `${eventName} - ${eventTime}`;
-  eventText.classList.add("event-text");
-
-  marker.appendChild(eventText);
-  marker.style.visibility = "visible";
-});
-
-// Tooltip functionality
-const circles = document.querySelectorAll('.marker');
-const tooltip = document.getElementById('tooltip');
-
-circles.forEach(circle => {
-  circle.addEventListener('mouseover', (e) => {
-    const locationName = circle.getAttribute('data-location');
-    tooltip.textContent = locationName;
-    tooltip.style.display = 'block';
-    tooltip.style.top = `${e.pageY + 10}px`;
-    tooltip.style.left = `${e.pageX + 10}px`;
-  });
-
-  circle.addEventListener('mousemove', (e) => {
-    tooltip.style.top = `${e.pageY + 10}px`;
-    tooltip.style.left = `${e.pageX + 10}px`;
-  });
-
-  circle.addEventListener('mouseout', () => {
-    tooltip.style.display = 'none';
-  });
-});
+        marker.appendChild(eventTag);
+        
+        // Remove event display after 5 seconds
+        setTimeout(() => {
+            eventTag.remove();
+        }, 5000);
+    }
+}
